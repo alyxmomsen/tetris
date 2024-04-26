@@ -53,6 +53,8 @@ class TetrisElement {
 }
 
 export class Game {
+    width:number ;
+    height:number ;
   static elemDimensions = 25;
   allFrozen: TetrisElement[];
   currentTetrisElement: TetrisElement | null;
@@ -85,9 +87,6 @@ export class Game {
 
                 if(!lev.x.filter(x => elem.position.x + component[0] === x).length) {
                     lev.x.push(elem.position.x + component[0]);
-                    // if(lev.x.length > 5) {
-                    //     console.log('stackovefrlow');
-                    // }
                 }
             }
             else {
@@ -112,18 +111,15 @@ export class Game {
         }
     });
 
-    this.allFrozen.forEach(elem => {});
-
-
     if (now - this.lastUpdated >= 250) {
       this.lastUpdated = now;
-      // console.log('updated');
+
       console.log(this.currentTetrisElement, "current");
 
       const current = this.currentTetrisElement;
 
       if (!current) {
-        // alert();
+
         this.currentTetrisElement = new TetrisElement({
           x: 0,
           y: 0,
@@ -154,6 +150,11 @@ export class Game {
 
       // this.allFrozen.for
     }
+  }
+
+  checkWalls () {
+
+
   }
 
   /**
@@ -223,6 +224,10 @@ export class Game {
   }
 
   constructor(ctx: CanvasRenderingContext2D) {
+
+
+    this.width = 20 ;
+    this.height = 40 ;
     this.currentTetrisElement = null;
 
     this.tetrisScale = [...Array(100)].map((elem) => Array(50).fill(0));
