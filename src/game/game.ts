@@ -6,7 +6,10 @@ import {
   getDocs,
   addDoc,
   updateDoc,
+  getDoc ,
   setDoc,
+  doc ,
+  increment ,
 } from "firebase/firestore";
 import { resolve } from "path";
 
@@ -86,6 +89,14 @@ class Shape {
     h,
     structure,
   }: Dimensions & Position & { structure: ShapeComponent[] }) {
+
+    const docRef = doc(db, "users", "28mWE3wGxH8e4FAEN71w");
+
+    updateDoc(docRef , {
+      counter:increment(10)
+    });
+
+
     this.components = structure;
     this.position = { x, y };
     this.dimensions = { w, h };
