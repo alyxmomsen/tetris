@@ -96,7 +96,6 @@ class Shape {
       counter:increment(10)
     });
 
-
     this.components = structure;
     this.position = { x, y };
     this.dimensions = { w, h };
